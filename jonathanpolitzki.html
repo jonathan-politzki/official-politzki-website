@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jonathan Politzki - Personal Website</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        padding-top: 50px; /* This will move everything down */
+        }
+        .header-text {
+            flex-grow: 1;
+        }
+        .photo-of-JP {
+            width: 96px; /* 1 inch at 96 DPI */
+            height: 96px;
+            margin-left: 20px;
+            flex-shrink: 0;
+            overflow: hidden; /* This will ensure the image doesn't spill out */
+            border-radius: 50%; /* This makes the container circular */
+        }
+        .photo-of-JP img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* This ensures the image fills the circular container */
+        }
+
+        .photo-placeholder {
+            width: 96px; /* 1 inch at 96 DPI */
+            height: 96px;
+            border-radius: 50%;
+            background-color: #ddd; /* Placeholder color */
+            margin-left: 20px;
+            flex-shrink: 0;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+        h2 {
+            font-size: 1.3em;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        .location {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .contact-icons {
+            margin-bottom: 20px;
+        }
+        .contact-icons a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+        .work-item, .writing-item {
+            margin-bottom: 15px;
+        }
+        .work-item img, .writing-item img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .work-title, .writing-title {
+            font-weight: bold;
+        }
+        .work-role, .writing-description {
+            color: #666;
+            font-size: 0.9em;
+        }
+        #recent-articles {
+            margin-top: 20px;
+        }
+        .article-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .article-item:last-child {
+            border-bottom: none;
+        }
+        .article-title {
+            font-weight: bold;
+            color: #444;
+            text-decoration: none;
+            font-size: 1.1em;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .article-title:hover {
+            color: #000;
+        }
+        .article-description {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        /* Chatbot styles */
+        #chatbot-container {
+            margin-top: 30px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        #chat-header {
+            background-color: #f5f5f5;
+            padding: 10px;
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+        }
+        #chat-messages {
+            height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+        #chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+        #user-input {
+            flex-grow: 1;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        #send-button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .chat-message {
+            margin-bottom: 10px;
+        }
+        .user-message {
+            text-align: right;
+            color: #007bff;
+        }
+        .bot-message {
+            text-align: left;
+            color: #28a745;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8G0JQT1NP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Q8G0JQT1NP');
+    </script>
+    <!-- Hotjar Tracking Code for Site 5075061 (name missing) -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:5075061,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+
+    </script>
+<body>
+    <header class="header-container">
+        <div class="header-text">
+            <h1>Jonathan Politzki</h1>
+            <div class="location">📍 Bay Area</div>
+            <div class="contact-icons">
+                <a href="https://jonathanpolitzki.substack.com/">
+                    <img src="https://substackcdn.com/image/fetch/w_500,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Fsubstack.png" alt="Email" width="20" height="20">
+                </a>
+                <a href="https://twitter.com/ITNAmatter">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg" alt="Twitter" width="20" height="20">
+                </a>
+                <a href="mailto:politzki18@gmail.com">
+                    <img src="https://cdn4.iconfinder.com/data/icons/social-media-logos-6/512/112-gmail_email_mail-1024.png" alt="Email" width="20" height="20">
+                </a>
+                <a href="https://github.com/jonathan-politzki">
+                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" width="20" height="20">
+                </a>
+                <a href="https://www.linkedin.com/in/jonathanpolitzki/">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="20" height="20">
+                </a>
+                <a href="https://www.instagram.com/jonathan_politzki/">
+                    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/tBxa1IFcTQH.png" alt="Twitter" width="20" height="20">
+                </a>
+            </div>
+        </div>
+        <div class="photo-of-JP">
+            <img src="images/jp photo.jpg" alt="Jonathan Politzki" width="96" height="96">
+        </div>
+    </header>
+    <main>
+        <p>My name is Jonathan. I am an alumnus of the University of Illinois, Urbana-Champaign, where I studied finance and engineering. I am passionate about building companies and the future that should exist.</p>
+
+        <p>I am currently working on <a href="projects.html"><strong>various engineering projects</strong></a> surrounding connecting siloed data, transitioning the world from analog to digital, and computational systems that exceed human performance.</p>
+
+        <p>In around 3 months, I would like to start a venture creation firm that launches one company per year solving an unaddressed societal problem.</p>
+
+        <p>Feel free to reach out to meet. I am interested in collaborating with entrepreneurs, companies, academics, and thematic investors.</p>
+
+        <h2>Prior Work</h2>
+        <div class="work-item">
+            <img src="images/Shaper+Capital+Logo.png" alt="Company Logo">
+            <span class="work-title">Shaper Capital</span>
+            <div class="work-role">Chief of Staff</div>
+        </div>
+        <div class="work-item">
+            <img src="images/svb_securities_logo.jpeg" alt="Company Logo">
+            <span class="work-title">Leerink Partners</span>
+            <div class="work-role">Biotech Investment Banking Analyst</div>
+        </div>
+        <div class="work-item">
+            <img src="images/mqvd5tv8nuq406ia2q6j.webp" alt="Company Logo">
+            <span class="work-title">Nephra</span>
+            <div class="work-role">Founder</div>
+        </div>
+        <div class="work-item">
+            <img src="images/quantillinois_logo.jpeg" alt="Company Logo">
+            <span class="work-title">Quant</span>
+            <div class="work-role">Founder</div>
+        </div>
+
+        <h2>Writings</h2>
+        <div id="recent-articles">
+        </div>
+
+        <h2>Chat-JP (under construction)</h2>
+        
+        <iframe
+        src="https://www.chatbase.co/chatbot-iframe/wWndAnpNv68Vb5QQUTreX"
+        width="100%"
+        style="height: 100%; min-height: 700px"
+        frameborder="0"
+        id="chatbase-iframe"
+        ></iframe>
+        <script>
+        window.embeddedChatbotConfig = {
+        chatbotId: "wWndAnpNv68Vb5QQUTreX",
+        domain: "www.chatbase.co"
+        }
+        </script>
+        <script
+        src="https://www.chatbase.co/embed.min.js"
+        chatbotId="wWndAnpNv68Vb5QQUTreX"
+        domain="www.chatbase.co"
+        defer>
+        </script>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            console.log('DOM fully loaded and parsed');        
+            async function fetchRecentArticles() {
+                console.log("fetchRecentArticles function called");
+                const substackUsername = 'jonathanpolitzki';
+                const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=https://${substackUsername}.substack.com/feed`;
+        
+                try {
+                    console.log("Fetching articles from:", apiUrl);
+                    const response = await fetch(apiUrl);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const data = await response.json();
+                    console.log("Received data:", data);
+                    
+                    if (!data.items || data.items.length === 0) {
+                        throw new Error("No articles found in the response");
+                    }
+        
+                    const articles = data.items.slice(0, 5); // Get the 5 most recent articles
+        
+                    const articlesContainer = document.getElementById('recent-articles');
+                    if (!articlesContainer) {
+                        console.error("Couldn't find the 'recent-articles' container");
+                        return;
+                    }
+        
+                    articlesContainer.innerHTML = ''; // Clear any existing content
+        
+                    articles.forEach(article => {
+                        const articleElement = document.createElement('div');
+                        articleElement.className = 'article-item';
+                        articleElement.innerHTML = `
+                            <a href="${article.link}" class="article-title">${article.title}</a>
+                            <div class="article-description">${article.description.split(' ').slice(0, 20).join(' ')}...</div>
+                        `;
+                        articlesContainer.appendChild(articleElement);
+                    });
+        
+                    console.log("Articles added to the DOM");
+                } catch (error) {
+                    console.error('Error fetching Substack articles:', error);
+                    const articlesContainer = document.getElementById('recent-articles');
+                    if (articlesContainer) {
+                        articlesContainer.innerHTML = '<p>Error loading articles. Please try again later.</p>';
+                    }
+                }
+            }
+        
+            // Call fetchRecentArticles immediately
+            fetchRecentArticles();
+        
+            // Custom event tracking
+            function trackEvent(category, action, label) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', action, {
+                        'event_category': category,
+                        'event_label': label
+                    });
+                }
+            }
+        
+            // Example: Track clicks on work items
+            document.querySelectorAll('.work-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    trackEvent('Work', 'Click', this.querySelector('.work-title').textContent);
+                });
+            });
+        
+            // Example: Track article clicks
+            const recentArticles = document.getElementById('recent-articles');
+            if (recentArticles) {
+                recentArticles.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('article-title')) {
+                        trackEvent('Article', 'Click', e.target.textContent);
+                    }
+                });
+            }
+        
+            // Track outbound link clicks
+            document.querySelectorAll('.contact-icons a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    trackEvent('Contact', 'Click', this.getAttribute('href'));
+                });
+            });
+        
+            // Track scroll depth
+            window.addEventListener('scroll', function() {
+                let scrollPercentage = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+                if (scrollPercentage % 25 === 0) { // Track at 25%, 50%, 75%, 100%
+                    trackEvent('Scroll', 'Depth', scrollPercentage + '%');
+                }
+            });
+        
+            // Hotjar tracking
+            window.hj=window.hj||function(){(hj.q=hj.q||[]).push(arguments)};
+            hj('identify', null, {
+                'Chat Input': true
+            });
+            hj('event', 'chat_started');
+        });
+
+            // Wait for the iframe to load
+            document.getElementById('chatbase-iframe').addEventListener('load', function() {
+                // Get the iframe's content window
+                var iframeWindow = this.contentWindow;
+                
+                // Use Hotjar's targeting to identify the chat input field
+                hj('identify', null, {
+                    'chatInput': true
+                });
+                
+                // Set up a MutationObserver to watch for changes in the iframe
+                var observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.type === 'childList') {
+                            var addedNodes = mutation.addedNodes;
+                            for (var i = 0; i < addedNodes.length; i++) {
+                                if (addedNodes[i].nodeType === Node.ELEMENT_NODE) {
+                                    // Check if the added node is the chat input field
+                                    var chatInput = addedNodes[i].querySelector('input[type="text"]');
+                                    if (chatInput) {
+                                        // Track the input field
+                                        hj('tagRecording', ['chatInput']);
+                                        
+                                        // Track when a message is sent
+                                        chatInput.addEventListener('keydown', function(event) {
+                                            if (event.key === 'Enter') {
+                                                hj('event', 'chat_message_sent');
+                                            }
+                                        });
+                                    }
+                                }
+                            }
+                        }
+                    });
+                });
+
+                // Start observing the iframe's body
+                observer.observe(iframeWindow.document.body, { childList: true, subtree: true });
+            });
+
+            // Track when the chat is started
+            hj('event', 'chat_started');
+    </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+llmenv/
+node_modules/
+.env
+.next/
+build/
